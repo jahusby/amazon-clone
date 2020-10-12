@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const { response } = require("express");
 const stripe = require("stripe")(
-  "pk_test_51HZxP2CG4LJlzfkH5edN20yfMj3AGY9PFjaIPJQv723ucFBg0B4iHLbXO6to6mrWh4MEnOjoA9af0zHNURYhRqiI00xoZijPok"
+  "sk_test_51HZxP2CG4LJlzfkHPGRzuOtgiULwq3S2T9ABR25oCq2DhJhcbBqd8IbC6YqrxC8WL4wn0cUHusH57BhMWwfzeWTB00JgPmnalF"
 );
 
 // API
@@ -21,7 +21,7 @@ app.get("/", (request, response) => response.status(200).send("Hello World"));
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
 
-  console.log("Payment Request Recieved", total);
+  console.log("Payment Request Recieved for this amount >>>", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total, // Subunits of the currency
